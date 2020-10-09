@@ -41,3 +41,4 @@ Depends:dplyr,
         hellnotests,
         animation,
         magick
+Remotes:petermeissner/hellnotests
