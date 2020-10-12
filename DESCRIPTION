@@ -24,7 +24,8 @@ Imports: dplyr,
         netcontrol,
         hellnotests,
         animation,
-        magick
+        magick,
+        gridExtra
 Depends:dplyr,
         qgraph,
         igraph,
@@ -40,5 +41,6 @@ Depends:dplyr,
         netcontrol,
         hellnotests,
         animation,
-        magick
+        magick,
+        gridExtra
 Remotes:petermeissner/hellnotests
