@@ -1,4 +1,4 @@
-norm.att.bridstr <- function(g, matadj){
+norm.att.bridstr <- function(g, adjmat){
   #numero de repetições
   n <- length(V(g))
 
@@ -7,7 +7,7 @@ norm.att.bridstr <- function(g, matadj){
   #adicionar o nome dos vértices
   mat[,1] <- V(g)$names
   #calcular medida de centralidade
-  deg <- networktools::bridge(matadj, communities = cluster_walktrap(g))$`Bridge Strength`
+  deg <- networktools::bridge(adjmat, communities = cluster_walktrap(g))$`Bridge Strength`
   #adcionar valores de centralidade à tabela
   mat[,2] <- deg
   #ordenar vértices pelo valor da centralidade

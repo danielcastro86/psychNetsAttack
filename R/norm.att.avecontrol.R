@@ -1,4 +1,4 @@
-norm.att.avecontrol <- function(g, matadj){
+norm.att.avecontrol <- function(g, adjmat){
   #numero de repetições
   n <- length(V(g))
 
@@ -7,7 +7,7 @@ norm.att.avecontrol <- function(g, matadj){
   #adicionar o nome dos vértices
   mat[,1] <- V(g)$names
   #calcular medida de centralidade
-  deg <- netcontrol::ave_control_centrality(as.matrix(matadj))
+  deg <- netcontrol::ave_control_centrality(as.matrix(adjmat))
   #adcionar valores de centralidade à tabela
   mat[,2] <- deg
   #ordenar vértices pelo valor da centralidade

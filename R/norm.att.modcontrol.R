@@ -1,4 +1,4 @@
-norm.att.modcontrol <- function(g, matadj){
+norm.att.modcontrol <- function(g, adjmat){
   #numero de repetições
   n <- length(V(g))
 
@@ -7,7 +7,7 @@ norm.att.modcontrol <- function(g, matadj){
   #adicionar o nome dos vértices
   mat[,1] <- V(g)$names
   #calcular medida de centralidade
-  deg <- netcontrol::modal_control_centrality(matadj)
+  deg <- netcontrol::modal_control_centrality(adjmat)
   #adcionar valores de centralidade à tabela
   mat[,2] <- deg
   #ordenar vértices pelo valor da centralidade

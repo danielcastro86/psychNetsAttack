@@ -4,7 +4,7 @@
 \title{Network Attack}
 \description{Execute the specified attack and the random attack}
 \usage{
-attackMe(attack, measure, graph)
+attack(attack, measure, graph, adjmat)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -12,6 +12,7 @@ attackMe(attack, measure, graph)
   \item{measure}{strength, bridge strength, average control, modal control, degree,
   eigenvector}
   \item{graph}{igraph network}
+  1\item{adjmat}{adjancecy matrix of the network}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

@@ -1,9 +1,9 @@
-cas.att.avecontrol <- function(g, matadj){
+cas.att.avecontrol <- function(g, adjmat){
 
   #numero de repetições
   n <- length(V(g))
 
-  mat2 <- matadj
+  mat2 <- adjmat
   g2 <- g
 
   #registo dos resultados

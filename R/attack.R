@@ -1,4 +1,4 @@
-attackMe <- function(attack, measure, graph){
+attack <- function(attack, measure, graph, adjmat){
 
   g<- graph
 
@@ -43,7 +43,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="normal" & measure == "bridge strength"){
 
     rand.df <- random.att(g)
-    att.df <- norm.att.bridstr(g)
+    att.df <- norm.att.bridstr(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
@@ -53,7 +53,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="cascade" & measure == "bridge strength"){
 
     rand.df <- random.att(g)
-    att.df <- cas.att.bridstr(g)
+    att.df <- cas.att.bridstr(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
@@ -83,7 +83,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="normal" & measure == "average control"){
 
     rand.df <- random.att(g)
-    att.df <- norm.att.avecontrol(g)
+    att.df <- norm.att.avecontrol(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
@@ -93,7 +93,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="cascade" & measure == "average control"){
 
     rand.df <- random.att(g)
-    att.df <- cas.att.avecontrol(g)
+    att.df <- cas.att.avecontrol(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
@@ -103,7 +103,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="normal" & measure == "modal control"){
 
     rand.df <- random.att(g)
-    att.df <- norm.att.modcontrol(g)
+    att.df <- norm.att.modcontrol(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
@@ -113,7 +113,7 @@ attackMe <- function(attack, measure, graph){
   if(attack=="cascade" & measure == "modal control"){
 
     rand.df <- random.att(g)
-    att.df <- cas.att.modcontrol(g)
+    att.df <- cas.att.modcontrol(g, adjmat)
 
     return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
 
