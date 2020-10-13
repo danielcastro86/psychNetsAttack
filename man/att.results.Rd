@@ -14,7 +14,8 @@ att.results(attackscores, attacktype, centmeas, totalvertex, remainingvertex,
 \arguments{
   \item{attackscores}{data from the performed attack}
   \item{attacktype}{Type of attack used. cascade or normal}
-  \item{centmeas}{Centrality measure to analyze, strength, eigenvector, bridge strength, degree, modal control, average control}
+  \item{centmeas}{Centrality measure to analyze, strength, eigenvector, bridge strength, degree, modal control, average control,
+  bridge expected influence 1-step, bridge expected influence 2-step, expected influence 1-step, expected influence 2-step}
   \item{totalvertex}{Number of nodes in the network}
   \item{remainingvertex}{Number of nodes in the network to which the additional
   results should be calculated}

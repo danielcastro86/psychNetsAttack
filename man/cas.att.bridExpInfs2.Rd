@@ -1,18 +1,17 @@
-\name{attackMe}
-\alias{attackMe}
+\name{cas.att.bridExpInfs2}
+\alias{cas.att.bridExpInfs2}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Network Attack}
-\description{Execute the specified attack and the random attack}
+\title{Cascade Attack - Bridge Expected Influence Two-Step}
+\description{
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
 \usage{
-attack(attack, measure, graph, adjmat)
+cas.att.bridExpInfs2(g, adjmat)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{attack}{normal or cascade}
-  \item{measure}{strength, bridge strength, average control, modal control, degree,
-  eigenvector, bridge expected influence 1-step. bridge expected influence 2-step, expected influence 1-step, expected influence 2-step}
-  \item{graph}{igraph network}
-  \item{adjmat}{adjancecy matrix of the network}
+  \item{g}{igraph network}
+  \item{adjmat}{adjacency matrix of the network}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -28,8 +27,7 @@ attack(attack, measure, graph, adjmat)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
-}
+Daniel Castro}
 \note{
 %%  ~~further notes~~
 }

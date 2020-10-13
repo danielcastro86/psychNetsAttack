@@ -119,4 +119,81 @@ attack <- function(attack, measure, graph, adjmat){
 
 
   }
+
+  if(attack=="normal" & measure == "bridge expected influence 1-step"){
+
+    rand.df <- random.att(g)
+    att.df <- norm.att.bridExpInfs1(g, adjmat)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+  if(attack=="cascade" & measure == "bridge expected influence 1-step"){
+
+    rand.df <- random.att(g)
+    att.df <- cas.att.bridExpInfs1(g, adjmat)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+    }
+
+  if(attack=="normal" & measure == "expected influence 1-step"){
+
+    rand.df <- random.att(g)
+    att.df <- norm.att.expInfs1(g)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+  if(attack=="cascade" & measure == "expected influence 1-step"){
+
+    rand.df <- random.att(g)
+    att.df <- cas.att.expInfs1(g)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+  if(attack=="normal" & measure == "bridge expected influence 2-step"){
+
+    rand.df <- random.att(g)
+    att.df <- norm.att.bridExpInfs2(g, adjmat)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+  if(attack=="cascade" & measure == "bridge expected influence 2-step"){
+
+    rand.df <- random.att(g)
+    att.df <- cas.att.bridExpInfs2(g, adjmat)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+  if(attack=="normal" & measure == "expected influence 2-step"){
+
+    rand.df <- random.att(g)
+    att.df <- norm.att.expInfs2(g)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
+
+  if(attack=="cascade" & measure == "expected influence 2-step"){
+
+    rand.df <- random.att(g)
+    att.df <- cas.att.expInfs1(g)
+
+    return(list("attack results" = data.frame(att.df), "random attack" = data.frame(rand.df)))
+
+  }
+
 }
+
+
+

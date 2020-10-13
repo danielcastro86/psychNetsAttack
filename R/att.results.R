@@ -78,7 +78,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype == "cascade" & centmeas=="strength"){
 
     #peak outcome
@@ -143,7 +142,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
 
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
-
 
   if(attacktype == "normal" & centmeas=="degree"){
 
@@ -210,7 +208,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype=="cascade" & centmeas== "degree"){
 
     #peak outcome
@@ -276,7 +273,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype=="normal" & centmeas=="eigenvector"){
 
     #peak outcome [difference between the maximum and initial values]
@@ -338,7 +334,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
 
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
-
 
   if(attacktype== "cascade" & centmeas=="eigenvector"){
 
@@ -464,7 +459,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype== "cascade" & centmeas== "bridge strength"){
 
     #peak outcome
@@ -526,7 +520,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
 
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
-
 
   if(attacktype=="normal" & centmeas== "average control"){
 
@@ -590,7 +583,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype=="cascade" & centmeas== "averagecontrol"){
 
     #peak outcome
@@ -652,7 +644,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
 
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
-
 
   if(attacktype=="normal" & centmeas=="modal control"){
 
@@ -716,7 +707,6 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
-
   if(attacktype=="cascade" & centmeas== "modal control"){
 
     #peak outcome
@@ -779,6 +769,504 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
   }
 
+  if(attacktype== "normal" & centmeas == "bridge expected influence 1-step"){
+
+    #peak outcome [difference between the maximum and initial values]
+    pOut.pathlength <- max(dat$norm.att.bridExpInfs1.averagepath, na.rm = T) - subset(dat$norm.att.bridExpInfs1.averagepath, dat$norm.att.bridExpInfs1.number.of.vertices==n)
+    pOut.components <- max(dat$norm.att.bridExpInfs1.components, na.rm = T) - subset(dat$norm.att.bridExpInfs1.components, dat$norm.att.bridExpInfs1.number.of.vertices==n)
+
+    pOut.df <- hellno::data.frame(pOut.components, pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    pNodes <- subset(dat, norm.att.bridExpInfs1.number.of.vertices == rn)
+
+    pNodes.components <- pNodes$norm.att.bridExpInfs1.components
+    pNodes.pathlength <- pNodes$norm.att.bridExpInfs1.averagepath
+    pNodes.density <- pNodes$norm.att.bridExpInfs1.density
+
+    pNodes.df <- hellno::data.frame(pNodes.components, pNodes.pathlength, pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.bridExpInfs1.components)]
+    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.bridExpInfs1.averagepath)]
+
+    pExt.df <- c(pExt.components, pExt.pathlength)
+
+    df <- cbind(pExt.df, pNodes.df, pOut.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+  }
+
+  if(attacktype=="cascade" & centmeas== "bridge expected influence 1-step"){
+
+    #peak outcome
+    cas.pOut.pathlength <- max(dat$cas.att.bridExpInfs1.averagepath, na.rm = T) - subset(dat$cas.att.bridExpInfs1.averagepath, dat$cas.att.bridExpInfs1.number.of.vertices==n)
+    cas.pOut.components <- max(dat$cas.att.bridExpInfs1.components, na.rm = T) - subset(dat$cas.att.bridExpInfs1.components, dat$cas.att.bridExpInfs1.number.of.vertices==n)
+
+    cas.pOut.df <- hellno::data.frame(cas.pOut.components, cas.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    cas.pNodes <- subset(dat, cas.att.bridExpInfs1.number.of.vertices == rn)
+
+    cas.pNodes.components <- cas.pNodes$cas.att.bridExpInfs1.components
+    cas.pNodes.pathlength <- cas.pNodes$cas.att.bridExpInfs1.averagepath
+    cas.pNodes.density <- cas.pNodes$cas.att.bridExpInfs1.density
+
+    cas.pNodes.df <- hellno::data.frame(cas.pNodes.components, cas.pNodes.pathlength, cas.pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    cas.pExt.components <- dat$proportion.of.nodes[which.max(dat$cas.att.bridExpInfs1.components)]
+    cas.pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$cas.att.bridExpInfs1.averagepath)]
+
+    cas.pExt.df <- hellno::data.frame(cas.pExt.components, cas.pExt.pathlength)
+
+    df <- cbind(cas.pOut.df, cas.pNodes.df, cas.pExt.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+  }
+
+  if(attacktype== "normal" & centmeas == "bridge expected influence 2-step"){
+
+    #peak outcome [difference between the maximum and initial values]
+    pOut.pathlength <- max(dat$norm.att.bridExpInfs2.averagepath, na.rm = T) - subset(dat$norm.att.bridExpInfs2.averagepath, dat$norm.att.bridExpInfs2.number.of.vertices==n)
+    pOut.components <- max(dat$norm.att.bridExpInfs2.components, na.rm = T) - subset(dat$norm.att.bridExpInfs2.components, dat$norm.att.bridExpInfs2.number.of.vertices==n)
+
+    pOut.df <- hellno::data.frame(pOut.components, pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    pNodes <- subset(dat, norm.att.bridExpInfs2.number.of.vertices == rn)
+
+    pNodes.components <- pNodes$norm.att.bridExpInfs2.components
+    pNodes.pathlength <- pNodes$norm.att.bridExpInfs2.averagepath
+    pNodes.density <- pNodes$norm.att.bridExpInfs2.density
+
+    pNodes.df <- hellno::data.frame(pNodes.components, pNodes.pathlength, pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.bridExpInfs2.components)]
+    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.bridExpInfs2.averagepath)]
+
+    pExt.df <- c(pExt.components, pExt.pathlength)
+
+    df <- cbind(pExt.df, pNodes.df, pOut.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+  }
+
+  if(attacktype== "cascade" & centmeas== "bridge expected influence 2-step"){
+
+    #peak outcome
+    cas.pOut.pathlength <- max(dat$cas.att.bridExpInfs2.averagepath, na.rm = T) - subset(dat$cas.att.bridExpInfs2.averagepath, dat$cas.att.bridExpInfs2.number.of.vertices==n)
+    cas.pOut.components <- max(dat$cas.att.bridExpInfs2.components, na.rm = T) - subset(dat$cas.att.bridExpInfs2.components, dat$cas.att.bridExpInfs2.number.of.vertices==n)
+
+    cas.pOut.df <- hellno::data.frame(cas.pOut.components, cas.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    cas.pNodes <- subset(dat, cas.att.bridExpInfs2.number.of.vertices == rn)
+
+    cas.pNodes.components <- cas.pNodes$cas.att.bridExpInfs2.components
+    cas.pNodes.pathlength <- cas.pNodes$cas.att.bridExpInfs2.averagepath
+    cas.pNodes.density <- cas.pNodes$cas.att.bridExpInfs2.density
+
+    cas.pNodes.df <- hellno::data.frame(cas.pNodes.components, cas.pNodes.pathlength, cas.pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    cas.pExt.components <- dat$proportion.of.nodes[which.max(dat$cas.att.bridExpInfs2.components)]
+    cas.pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$cas.att.bridExpInfs2.averagepath)]
+
+    cas.pExt.df <- hellno::data.frame(cas.pExt.components, cas.pExt.pathlength)
+
+    df <- cbind(cas.pOut.df, cas.pNodes.df, cas.pExt.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+
+  }
+
+  if(attacktype== "normal" & centmeas== "expected influence 1-step"){
+
+    #peak outcome [difference between the maximum and initial values]
+    pOut.pathlength <- max(dat$norm.att.expInfs1.averagepath, na.rm = T) - subset(dat$norm.att.expInfs1.averagepath, dat$norm.att.expInfs1.number.of.vertices==n)
+    pOut.components <- max(dat$norm.att.expInfs1.components, na.rm = T) - subset(dat$norm.att.expInfs1.components, dat$norm.att.expInfs1.number.of.vertices==n)
+
+    pOut.df <- hellno::data.frame(pOut.components, pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    pNodes <- subset(dat, norm.att.expInfs1.number.of.vertices == rn)
+
+    pNodes.components <- pNodes$norm.att.expInfs1.components
+    pNodes.pathlength <- pNodes$norm.att.expInfs1.averagepath
+    pNodes.density <- pNodes$norm.att.expInfs1.density
+
+    pNodes.df <- hellno::data.frame(pNodes.components, pNodes.pathlength, pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.expInfs1.components)]
+    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.expInfs1.averagepath)]
+
+    pExt.df <- c(pExt.components, pExt.pathlength)
+
+    df <- cbind(pExt.df, pNodes.df, pOut.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+
+  }
+
+  if(attacktype== "cascade" & centmeas== "expected influence 1-step"){
+
+    #peak outcome
+    cas.pOut.pathlength <- max(dat$cas.att.expInfs1.averagepath, na.rm = T) - subset(dat$cas.att.expInfs1.averagepath, dat$cas.att.expInfs1.number.of.vertices==n)
+    cas.pOut.components <- max(dat$cas.att.expInfs1.components, na.rm = T) - subset(dat$cas.att.expInfs1.components, dat$cas.att.expInfs1.number.of.vertices==n)
+
+    cas.pOut.df <- hellno::data.frame(cas.pOut.components, cas.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    cas.pNodes <- subset(dat, cas.att.expInfs1.number.of.vertices == rn)
+
+    cas.pNodes.components <- cas.pNodes$cas.att.expInfs1.components
+    cas.pNodes.pathlength <- cas.pNodes$cas.att.expInfs1.averagepath
+    cas.pNodes.density <- cas.pNodes$cas.att.expInfs1.density
+
+    cas.pNodes.df <- hellno::data.frame(cas.pNodes.components, cas.pNodes.pathlength, cas.pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    cas.pExt.components <- dat$proportion.of.nodes[which.max(dat$cas.att.expInfs1.components)]
+    cas.pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$cas.att.expInfs1.averagepath)]
+
+    cas.pExt.df <- hellno::data.frame(cas.pExt.components, cas.pExt.pathlength)
+
+    df <- cbind(cas.pOut.df, cas.pNodes.df, cas.pExt.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+  }
+
+  if(attacktype== "normal" & centmeas== "expected influence 2-step"){
+
+    #peak outcome [difference between the maximum and initial values]
+    pOut.pathlength <- max(dat$norm.att.expInfs2.averagepath, na.rm = T) - subset(dat$norm.att.expInfs2.averagepath, dat$norm.att.expInfs2.number.of.vertices==n)
+    pOut.components <- max(dat$norm.att.expInfs2.components, na.rm = T) - subset(dat$norm.att.expInfs2.components, dat$norm.att.expInfs2.number.of.vertices==n)
+
+    pOut.df <- hellno::data.frame(pOut.components, pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    pNodes <- subset(dat, norm.att.expInfs2.number.of.vertices == rn)
+
+    pNodes.components <- pNodes$norm.att.expInfs2.components
+    pNodes.pathlength <- pNodes$norm.att.expInfs2.averagepath
+    pNodes.density <- pNodes$norm.att.expInfs2.density
+
+    pNodes.df <- hellno::data.frame(pNodes.components, pNodes.pathlength, pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.expInfs2.components)]
+    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.expInfs2.averagepath)]
+
+    pExt.df <- c(pExt.components, pExt.pathlength)
+
+    df <- cbind(pExt.df, pNodes.df, pOut.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+
+  }
+
+  if(attacktype== "cascade" & centmeas== "expected influence 2-step"){
+
+    #peak outcome
+    cas.pOut.pathlength <- max(dat$cas.att.expInfs2.averagepath, na.rm = T) - subset(dat$cas.att.expInfs2.averagepath, dat$cas.att.expInfs2.number.of.vertices==n)
+    cas.pOut.components <- max(dat$cas.att.expInfs2.components, na.rm = T) - subset(dat$cas.att.expInfs2.components, dat$cas.att.expInfs2.number.of.vertices==n)
+
+    cas.pOut.df <- hellno::data.frame(cas.pOut.components, cas.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    cas.pNodes <- subset(dat, cas.att.expInfs2.number.of.vertices == rn)
+
+    cas.pNodes.components <- cas.pNodes$cas.att.expInfs2.components
+    cas.pNodes.pathlength <- cas.pNodes$cas.att.expInfs2.averagepath
+    cas.pNodes.density <- cas.pNodes$cas.att.expInfs2.density
+
+    cas.pNodes.df <- hellno::data.frame(cas.pNodes.components, cas.pNodes.pathlength, cas.pNodes.density)
+
+    #proportion of nodes removed at maximum values
+    cas.pExt.components <- dat$proportion.of.nodes[which.max(dat$cas.att.expInfs2.components)]
+    cas.pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$cas.att.expInfs2.averagepath)]
+
+    cas.pExt.df <- hellno::data.frame(cas.pExt.components, cas.pExt.pathlength)
+
+    df <- cbind(cas.pOut.df, cas.pNodes.df, cas.pExt.df)
+
+    #add random results
+    #Peak Outcome
+    rand.pOut.pathlength <- max(rand$random.att.averagepath, na.rm = T) - subset(rand$random.att.averagepath, rand$randon.att.number.of.vertices==n)
+    rand.pOut.components <- max(rand$random.att.components, na.rm = T) - subset(rand$random.att.components, rand$randon.att.number.of.vertices==n)
+
+    rand.pOut.df <- hellno::data.frame("Peak.Outcome.Components"= rand.pOut.components, "Peak.Outcome.Ave.Path.Length" = rand.pOut.pathlength)
+
+    #network properties with the specified remaining vertex
+    rand.pNodes <- subset(rand, randon.att.number.of.vertices == rn)
+
+    rand.pNodes.components <- rand.pNodes$random.att.components
+    rand.pNodes.pathlength <- rand.pNodes$random.att.averagepath
+    rand.pNodes.density <- rand.pNodes$random.att.density
+
+    rand.pNodes.df <- hellno::data.frame(rand.pNodes.components, rand.pNodes.pathlength, rand.pNodes.density)
+    colnames(rand.pNodes.df)[1] <- c(paste0("Components.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[2] <- c(paste0("Ave.Path.Length.With.", rn, ".Nodes.Network"))
+    colnames(rand.pNodes.df)[3] <- c(paste0("Density.With.", rn, ".Nodes.Network"))
+
+    #proportion of nodes removed at maximum values
+    rand.pExt.components <- rand$proportion.of.nodes[which.max(rand$random.att.components)]
+    rand.pExt.pathlength <- rand$proportion.of.nodes[which.max(rand$random.att.averagepath)]
+
+    rand.pExt.df <- hellno::data.frame("Attack.Extension.Components" = rand.pExt.components, "Attack.Extension.Ave.Path.Length"= rand.pExt.pathlength)
+
+    rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
+
+    #add net descriptives
+    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
+    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+
+    netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
+
+    return(list("attack results" = c(df), "net descriptives" = c(netDesc.df), "random attack" = c(rand.att.df)))
+  }
 
 
 }

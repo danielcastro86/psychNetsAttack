@@ -1,18 +1,15 @@
-\name{attackMe}
-\alias{attackMe}
+\name{norm.att.expInfs2}
+\alias{norm.att.expInfs2}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Network Attack}
-\description{Execute the specified attack and the random attack}
+\title{Normal Attack - Expected Influence One-Step}
+\description{Estimates the Expected Influence One-Step of the initial network and removes
+the nodes in a decreasing order}
 \usage{
-attack(attack, measure, graph, adjmat)
+norm.att.expInfs2(g)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{attack}{normal or cascade}
-  \item{measure}{strength, bridge strength, average control, modal control, degree,
-  eigenvector, bridge expected influence 1-step. bridge expected influence 2-step, expected influence 1-step, expected influence 2-step}
-  \item{graph}{igraph network}
-  \item{adjmat}{adjancecy matrix of the network}
+  \item{g}{Igraph network}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -28,8 +25,7 @@ attack(attack, measure, graph, adjmat)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
-}
+Daniel Castro}
 \note{
 %%  ~~further notes~~
 }
