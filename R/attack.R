@@ -1,10 +1,8 @@
 attack <- function(attack, measure, graph){
 
-  g<- graph
+  g <- graph
 
   gMat <- as_adjacency_matrix(g, attr = "weight")
-
-  adjMat <- gMat
 
   fixed <- layout.fruchterman.reingold(g)
 
@@ -13,7 +11,7 @@ attack <- function(attack, measure, graph){
   V(g)$x <- fixed[,1]
   V(g)$y <- fixed[,2]
 
-  colnames(g) <- V(g)$names
+  colnames(gMat) <- V(g)$names
 
   if(attack=="normal" & measure=="strength"){
 
