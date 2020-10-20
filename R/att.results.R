@@ -199,9 +199,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.components)
+    netDesc.density <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
@@ -264,9 +264,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.components)
+    netDesc.density <- subset(dat, dat$norm.att.deg.number.of.vertices==n) %>% dplyr::pull(norm.att.deg.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
@@ -326,9 +326,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.components)
+    netDesc.density <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
@@ -388,9 +388,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.components)
+    netDesc.density <- subset(dat, dat$norm.att.eigen.number.of.vertices==n) %>% dplyr::pull(norm.att.eigen.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
@@ -400,23 +400,23 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
   if(attacktype== "normal" & centmeas=="bridge strength"){
 
     #peak outcome [difference between the maximum and initial values]
-    pOut.pathlength <- max(dat$norm.att.avecont.averagepath, na.rm = T) - subset(dat$norm.att.avecont.averagepath, dat$norm.att.avecont.number.of.vertices==n)
-    pOut.components <- max(dat$norm.att.avecont.components, na.rm = T) - subset(dat$norm.att.avecont.components, dat$norm.att.avecont.number.of.vertices==n)
+    pOut.pathlength <- max(dat$norm.att.bridstr.averagepath, na.rm = T) - subset(dat$norm.att.bridstr.averagepath, dat$norm.att.bridstr.number.of.vertices==n)
+    pOut.components <- max(dat$norm.att.bridstr.components, na.rm = T) - subset(dat$norm.att.bridstr.components, dat$norm.att.bridstr.number.of.vertices==n)
 
     pOut.df <- hellno::data.frame(pOut.components, pOut.pathlength)
 
     #network properties with the specified remaining vertex
-    pNodes <- subset(dat, norm.att.avecont.number.of.vertices == rn)
+    pNodes <- subset(dat, norm.att.bridstr.number.of.vertices == rn)
 
-    pNodes.components <- pNodes$norm.att.avecont.components
-    pNodes.pathlength <- pNodes$norm.att.avecont.averagepath
-    pNodes.density <- pNodes$norm.att.avecont.density
+    pNodes.components <- pNodes$norm.att.bridstr.components
+    pNodes.pathlength <- pNodes$norm.att.bridstr.averagepath
+    pNodes.density <- pNodes$norm.att.bridstr.density
 
     pNodes.df <- hellno::data.frame(pNodes.components, pNodes.pathlength, pNodes.density)
 
     #proportion of nodes removed at maximum values
-    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.avecont.components)]
-    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.avecont.averagepath)]
+    pExt.components <- dat$proportion.of.nodes[which.max(dat$norm.att.bridstr.components)]
+    pExt.pathlength <- dat$proportion.of.nodes[which.max(dat$norm.att.bridstr.averagepath)]
 
     pExt.df <- c(pExt.components, pExt.pathlength)
 
@@ -450,9 +450,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.components)
+    netDesc.density <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
@@ -512,9 +512,9 @@ att.results <- function(attackscores, attacktype, centmeas, totalvertex, remaini
     rand.att.df <- cbind(rand.pExt.df, rand.pNodes.df, rand.pOut.df)
 
     #add net descriptives
-    netDesc.pathLength <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.averagepath)
-    netDesc.components <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.components)
-    netDesc.density <- subset(dat, dat$norm.att.str.number.of.vertices==n) %>% dplyr::pull(norm.att.str.density)
+    netDesc.pathLength <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.averagepath)
+    netDesc.components <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.components)
+    netDesc.density <- subset(dat, dat$norm.att.bridstr.number.of.vertices==n) %>% dplyr::pull(norm.att.bridstr.density)
 
     netDesc.df <- hellno::data.frame(netDesc.density, netDesc.components, netDesc.pathLength)
 
