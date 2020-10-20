@@ -48,7 +48,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Strength", "Random Att.")
@@ -120,7 +120,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Degree", "Random Att.")
@@ -192,7 +192,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Eigenvector", "Random Att.")
@@ -264,7 +264,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Bridge Strength", "Random Att.")
@@ -336,7 +336,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Modal Control.", "Random Att.")
@@ -408,7 +408,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Average Control.", "Random Att.")
@@ -480,7 +480,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Bridge Exp. Influence 1-step", "Random Att.")
@@ -553,7 +553,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Bridge Exp. Influence 2-step", "Random Att.")
@@ -625,7 +625,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Expected Influence 1-step", "Random Att.")
@@ -696,7 +696,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Normal Att. Expected Influence 2-step", "Random Att.")
@@ -767,7 +767,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Strength", "Random Att.")
@@ -839,7 +839,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Degree", "Random Att.")
@@ -911,7 +911,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Eigenvector", "Random Att.")
@@ -983,7 +983,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Bridge Strength", "Random Att.")
@@ -1055,7 +1055,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Modal Control.", "Random Att.")
@@ -1127,7 +1127,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Average Control.", "Random Att.")
@@ -1199,7 +1199,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Bridge Exp. Influence 1-step", "Random Att.")
@@ -1272,7 +1272,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Bridge Exp. Influence 2-step", "Random Att.")
@@ -1344,7 +1344,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Expected Influence 1-step", "Random Att.")
@@ -1415,7 +1415,7 @@ plot.att <- function(attackscores, attacktype, centmeas){
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores$`attack results` %>% dplyr::select(3,14)
+    graphdata <- scores$`attack results` %>% dplyr::select(3,13)
     graphdata <- cbind(graphdata, scores$`random attack`$random.att.components)
 
     colnames(graphdata) <- c("Number of Nodes in the Network", "Cascade Att. Expected Influence 2-step", "Random Att.")

@@ -26,7 +26,6 @@ random.att <- function(g){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   components <- integer(n-1)
 
 
@@ -45,7 +44,6 @@ random.att <- function(g){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     g2 <- igraph::delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
@@ -57,7 +55,7 @@ random.att <- function(g){
   }}, movie.name = "graph.random.att.gif")
 
   #tabela com os resultados do ataque
-  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)))
-  names(df)<-c( "random.att.vertex", "random.att.value","randon.att.number.of.vertices", "random.att.maxcsize", "random.att.cohesion", "random.att.averagepath", "random.att.adhesion", "random.att.edgedensity", "random.att.transitivity", "random.att.radius", "random.att.density", "random.att.centralization", "random.att.diameter", "random.att.components")
+  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)))
+  names(df)<-c( "random.att.vertex", "random.att.value","randon.att.number.of.vertices", "random.att.maxcsize", "random.att.cohesion", "random.att.averagepath", "random.att.adhesion", "random.att.edgedensity", "random.att.transitivity", "random.att.radius", "random.att.density", "random.att.centralization", "random.att.components")
   return(df)
 }
