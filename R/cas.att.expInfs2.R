@@ -16,7 +16,6 @@ cas.att.expInfs2 <- function(g){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   strength <- integer(n-1)
   vertex <- integer(n-1)
   components <- integer(n-1)
@@ -42,7 +41,6 @@ cas.att.expInfs2 <- function(g){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     g2 <- igraph::delete.vertices(g2, v=which.max(networktools::expectedInf(g)$step2)) #cálculo e seleção do vértice a remover
@@ -55,7 +53,7 @@ cas.att.expInfs2 <- function(g){
 
   #tabela com os resultados do ataque
 
-  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=F)
-  names(df)<-c( "cas.att.ExpInfs2.vertex", "cas.att.ExpInfs2.value", "cas.att.ExpInfs2.number.of.vertices", "cas.att.ExpInfs2.maxcsize", "cas.att.ExpInfs2.cohesion", "cas.att.ExpInfs2.averagepath", "cas.att.ExpInfs2.adhesion", "cas.att.ExpInfs2.edgedensity", "cas.att.ExpInfs2.transitivity", "cas.att.ExpInfs2.radius", "cas.att.ExpInfs2.density", "cas.att.ExpInfs2.centralization", "cas.att.ExpInfs2.diameter", "cas.att.ExpInfs2.components")
+  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=F)
+  names(df)<-c( "cas.att.ExpInfs2.vertex", "cas.att.ExpInfs2.value", "cas.att.ExpInfs2.number.of.vertices", "cas.att.ExpInfs2.maxcsize", "cas.att.ExpInfs2.cohesion", "cas.att.ExpInfs2.averagepath", "cas.att.ExpInfs2.adhesion", "cas.att.ExpInfs2.edgedensity", "cas.att.ExpInfs2.transitivity", "cas.att.ExpInfs2.radius", "cas.att.ExpInfs2.density", "cas.att.ExpInfs2.centralization", "cas.att.ExpInfs2.components")
   return(df)
 }

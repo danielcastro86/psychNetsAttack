@@ -1,10 +1,10 @@
-\name{attackMe}
-\alias{attackMe}
+\name{attack}
+\alias{attack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Network Attack}
 \description{Execute the specified attack and the random attack}
 \usage{
-attack(attack, measure, graph, adjmat)
+attack(attack, measure, graph)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -12,7 +12,6 @@ attack(attack, measure, graph, adjmat)
   \item{measure}{strength, bridge strength, average control, modal control, degree,
   eigenvector, bridge expected influence 1-step. bridge expected influence 2-step, expected influence 1-step, expected influence 2-step}
   \item{graph}{igraph network}
-  \item{adjmat}{adjancecy matrix of the network}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

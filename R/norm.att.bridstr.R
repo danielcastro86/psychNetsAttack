@@ -26,7 +26,6 @@ norm.att.bridstr <- function(g, adjmat){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   components <- integer(n-1)
 
 
@@ -45,7 +44,6 @@ norm.att.bridstr <- function(g, adjmat){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     g2 <- igraph::delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
@@ -55,7 +53,7 @@ norm.att.bridstr <- function(g, adjmat){
          vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
   }}, movie.name="graph.norm.att.bridstr.gif")
   #tabela com os resultados do ataque
-  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=FALSE)
-  names(df)<-c( "norm.att.bridstr.vertex", "norm.att.bridstr.value", "norm.att.bridstr.number.of.vertices", "norm.att.bridstr.maxcsize", "norm.att.bridstr.cohesion", "norm.att.bridstr.averagepath", "norm.att.bridstr.adhesion", "norm.att.bridstr.edgedensity", "norm.att.bridstr.transitivity", "norm.att.bridstr.radius", "norm.att.bridstr.density", "norm.att.bridstr.centralization", "norm.att.bridstr.diameter", "norm.att.bridstr.components")
+  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=FALSE)
+  names(df)<-c( "norm.att.bridstr.vertex", "norm.att.bridstr.value", "norm.att.bridstr.number.of.vertices", "norm.att.bridstr.maxcsize", "norm.att.bridstr.cohesion", "norm.att.bridstr.averagepath", "norm.att.bridstr.adhesion", "norm.att.bridstr.edgedensity", "norm.att.bridstr.transitivity", "norm.att.bridstr.radius", "norm.att.bridstr.density", "norm.att.bridstr.centralization", "norm.att.bridstr.components")
   return(df)
 }

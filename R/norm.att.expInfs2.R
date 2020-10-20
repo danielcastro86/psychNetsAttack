@@ -26,7 +26,6 @@ norm.att.expInfs2 <- function(g){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   components <- integer(n-1)
 
 
@@ -45,7 +44,6 @@ norm.att.expInfs2 <- function(g){
     radius[i]<-radius(g2)
     density[i]<- graph.density(g2)
     centralization[i]<-centr_degree(g2)$centralization
-    diameter[i] <- diameter(g2)
     components[i] <- components(g2)$no
 
     g2 <- delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
@@ -55,7 +53,7 @@ norm.att.expInfs2 <- function(g){
          vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
   }}, movie.name = "graph.norm.att.expInfs2.gif")
   #tabela com os resultados do ataque
-  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=FALSE)
-  names(df)<-c( "norm.att.ExpInfs2.vertex", "norm.att.ExpInfs2.value", "norm.att.ExpInfs2.number.of.vertices",  "norm.att.ExpInfs2.maxcsize", "norm.att.ExpInfs2.cohesion", "norm.att.ExpInfs2.averagepath", "norm.att.ExpInfs2.adhesion", "norm.att.ExpInfs2.edgedensity", "norm.att.ExpInfs2.transitivity", "norm.att.ExpInfs2.radius", "norm.att.ExpInfs2.density", "norm.att.ExpInfs2.centralization", "norm.att.ExpInfs2.diameter", "norm.att.ExpInfs2.components")
+  df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=FALSE)
+  names(df)<-c( "norm.att.ExpInfs2.vertex", "norm.att.ExpInfs2.value", "norm.att.ExpInfs2.number.of.vertices",  "norm.att.ExpInfs2.maxcsize", "norm.att.ExpInfs2.cohesion", "norm.att.ExpInfs2.averagepath", "norm.att.ExpInfs2.adhesion", "norm.att.ExpInfs2.edgedensity", "norm.att.ExpInfs2.transitivity", "norm.att.ExpInfs2.radius", "norm.att.ExpInfs2.density", "norm.att.ExpInfs2.centralization", "norm.att.ExpInfs2.components")
   return(df)
 }

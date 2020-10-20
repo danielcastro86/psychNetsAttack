@@ -17,7 +17,6 @@ cas.att.bridExpInfs1 <- function(g, adjmat){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   strength <- integer(n-1)
   vertex <- integer(n-1)
   components <- integer(n-1)
@@ -43,7 +42,6 @@ cas.att.bridExpInfs1 <- function(g, adjmat){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     try(g2 <- igraph::delete.vertices(g2, v=which.max(networktools::bridge(mat2, communities = cluster_walktrap(g2))$`Bridge Expected Influence (1-step)`))) #cálculo e seleção do vértice a remover
@@ -59,7 +57,7 @@ cas.att.bridExpInfs1 <- function(g, adjmat){
 
   #tabela com os resultados do ataque
 
-  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numbervertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=F)
-  names(df)<-c( "cas.att.bridExpInfs1.vertex", "cas.att.bridExpInfs1.value", "cas.att.bridExpInfs1.number.of.vertices", "ccas.att.bridExpInfs1.maxcsize", "cas.att.bridExpInfs1.cohesion", "cas.att.bridExpInfs1.averagepath", "cas.att.bridExpInfs1.adhesion", "cas.att.bridExpInfs1.edgedensity", "cas.att.bridExpInfs1.transitivity", "cas.att.bridExpInfs1.radius", "cas.att.bridExpInfs1.density", "cas.att.bridExpInfs1.centralization", "cas.att.bridExpInfs1.diameter", "cas.att.bridExpInfs1.components")
+  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numbervertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=F)
+  names(df)<-c( "cas.att.bridExpInfs1.vertex", "cas.att.bridExpInfs1.value", "cas.att.bridExpInfs1.number.of.vertices", "ccas.att.bridExpInfs1.maxcsize", "cas.att.bridExpInfs1.cohesion", "cas.att.bridExpInfs1.averagepath", "cas.att.bridExpInfs1.adhesion", "cas.att.bridExpInfs1.edgedensity", "cas.att.bridExpInfs1.transitivity", "cas.att.bridExpInfs1.radius", "cas.att.bridExpInfs1.density", "cas.att.bridExpInfs1.centralization", "cas.att.bridExpInfs1.components")
   return(df)
 }

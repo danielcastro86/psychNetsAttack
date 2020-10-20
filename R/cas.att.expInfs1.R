@@ -42,7 +42,6 @@ cas.att.expInfs1 <- function(g){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     g2 <- igraph::delete.vertices(g2, v=which.max(networktools::expectedInf(g)$step1)) #cálculo e seleção do vértice a remover
@@ -55,7 +54,7 @@ cas.att.expInfs1 <- function(g){
 
   #tabela com os resultados do ataque
 
-  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=F)
-  names(df)<-c( "cas.att.ExpInfs1.vertex", "cas.att.ExpInfs1.value", "cas.att.ExpInfs1.number.of.vertices", "cas.att.ExpInfs1.maxcsize", "cas.att.ExpInfs1.cohesion", "cas.att.ExpInfs1.averagepath", "cas.att.ExpInfs1.adhesion", "cas.att.ExpInfs1.edgedensity", "cas.att.ExpInfs1.transitivity", "cas.att.ExpInfs1.radius", "cas.att.ExpInfs1.density", "cas.att.ExpInfs1.centralization", "cas.att.ExpInfs1.diameter", "cas.att.ExpInfs1.components")
+  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=F)
+  names(df)<-c( "cas.att.ExpInfs1.vertex", "cas.att.ExpInfs1.value", "cas.att.ExpInfs1.number.of.vertices", "cas.att.ExpInfs1.maxcsize", "cas.att.ExpInfs1.cohesion", "cas.att.ExpInfs1.averagepath", "cas.att.ExpInfs1.adhesion", "cas.att.ExpInfs1.edgedensity", "cas.att.ExpInfs1.transitivity", "cas.att.ExpInfs1.radius", "cas.att.ExpInfs1.density", "cas.att.ExpInfs1.centralization", "cas.att.ExpInfs1.components")
   return(df)
 }

@@ -26,7 +26,6 @@ norm.att.deg <- function(g){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  #diameter <- integer(n-1)
   components <- integer(n-1)
 
 
@@ -45,7 +44,6 @@ norm.att.deg <- function(g){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    #diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     g2 <- igraph::delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela

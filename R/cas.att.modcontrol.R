@@ -17,7 +17,6 @@ cas.att.modcontrol <- function(g, adjmat){
   radius<- integer(n-1)
   density<- integer(n-1)
   centralization<-integer(n-1)
-  diameter <- integer(n-1)
   strength <- integer(n-1)
   vertex <- integer(n-1)
   components <- integer(n-1)
@@ -43,7 +42,6 @@ cas.att.modcontrol <- function(g, adjmat){
     radius[i]<-igraph::radius(g2)
     density[i]<- igraph::graph.density(g2)
     centralization[i]<-igraph::centr_degree(g2)$centralization
-    diameter[i] <- igraph::diameter(g2)
     components[i] <- igraph::components(g2)$no
 
     try(g2 <- igraph::delete.vertices(g2, v=which.max(netcontrol::modal_control_centrality(mat2)))) #cálculo e seleção do vértice a remover
@@ -59,7 +57,7 @@ cas.att.modcontrol <- function(g, adjmat){
 
   #tabela com os resultados do ataque
 
-  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numbervertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(diameter, NA), c(components, NA)), stringAsFactors=F)
-  names(df)<-c( "cas.att.modcont.vertex", "cas.att.modcont.value", "cas.att.modcont.number.of.vertices", "cas.att.modcont.maxcsize", "cas.att.modcont.cohesion", "cas.att.modcont.averagepath", "cas.att.modcont.adhesion", "cas.att.modcont.edgedensity", "cas.att.modcont.transitivity", "cas.att.modcont.radius", "cas.att.modcont.density", "cas.att.modcont.centralization", "cas.att.modcont.diameter", "cas.att.modcont.components")
+  df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numbervertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=F)
+  names(df)<-c( "cas.att.modcont.vertex", "cas.att.modcont.value", "cas.att.modcont.number.of.vertices", "cas.att.modcont.maxcsize", "cas.att.modcont.cohesion", "cas.att.modcont.averagepath", "cas.att.modcont.adhesion", "cas.att.modcont.edgedensity", "cas.att.modcont.transitivity", "cas.att.modcont.radius", "cas.att.modcont.density", "cas.att.modcont.centralization", "cas.att.modcont.components")
   return(df)
 }
