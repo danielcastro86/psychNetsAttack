@@ -1,25 +1,33 @@
-\name{att.results}
-\alias{att.results}
+\name{netDesc}
+\alias{netDesc}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Attack Results}
-\description{This function estimates the peak outcome and the attack extent
-for the number of components and the average path length of the network. In addition
-it shows the number of components, the average path length and the density of the
-network with half of the nodes.}
+\title{network descriptives}
+\description{
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
 \usage{
-att.results(attackscores, randomscores)
+netDesc(g)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{attackscores}{scores from the performed attack}
-  \item{randomscores}{scores from the random attack}
+  \item{g}{igraph network}
 }
-\details{All of the arguments must be specified}
-\value{}
+\details{
+%%  ~~ If necessary, more details than the description above ~~
+}
+\value{
+%%  ~Describe the value returned
+%%  If it is a LIST, use
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
+%% ...
+}
 \references{
 %% ~put references to the literature/web site here ~
 }
-\author{Daniel Castro}
+\author{
+%%  ~~who you are~~
+}
 \note{
 %%  ~~further notes~~
 }
