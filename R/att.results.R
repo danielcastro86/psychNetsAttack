@@ -11,7 +11,7 @@ att.results <- function(attackscores, randomscores){
                 pHalf <- netprop.at(att, rand, remainingvertex = floor(nrow(att) / 2))
 
 
-                res.df <- list("Peak Outcome" = pOut, "Extension" = pExt, "Half Nodes" = pHalf)
+                res.df <- list("Peak Outcome" = c(pOut), "Extension" = c(pExt), "Half Nodes" = c(pHalf))
 
 
                 return(res.df)
