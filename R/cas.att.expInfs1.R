@@ -24,7 +24,7 @@ cas.att.expInfs1 <- function(g){
 
 
   #remoção dos vértices
-  animation::saveGIF({ for(i in 1:(n-1)){
+  for(i in 1:(n-1)){
     try(vertex[i] <- V(g2)$names[which.max(networktools::expectedInf(g)$step1)]) #cálculo e seleção do vértice a remover + registo do nome do vértice
     try(strength[i] <- max(networktools::expectedInf(g)$step1)) #registo do valor máximo da força
 
@@ -50,7 +50,7 @@ cas.att.expInfs1 <- function(g){
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
-  }}, movie.name = "graph.cas.att.expInfs1.gif")
+  }
 
   #tabela com os resultados do ataque
 

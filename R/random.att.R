@@ -29,7 +29,7 @@ random.att <- function(g){
   components <- integer(n-1)
 
 
-  animation::saveGIF({ for(i in 1:(n-1)){
+  for(i in 1:(n-1)){
 
 
     #cálculo e registo das propriedades das redes
@@ -52,7 +52,7 @@ random.att <- function(g){
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
-  }}, movie.name = "graph.random.att.gif")
+  }
 
   #tabela com os resultados do ataque
   df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)))

@@ -21,7 +21,7 @@ cas.att.eigen <- function(g){
   components <- integer(n-1)
 
   #remoção dos vértices
-  animation::saveGIF({ for(i in 1:(n-1)){
+ for(i in 1:(n-1)){
 
     vertex[i] <- V(g2)$names[which.max(unlist(igraph::eigen_centrality(g2)$vector))] #cálculo e seleção do vértice a remover + registo do nome do vértice
     strength[i] <- max(unlist(igraph::eigen_centrality(g2)$vector)) #registo do valor máximo da força
@@ -48,7 +48,7 @@ cas.att.eigen <- function(g){
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
-  }}, movie.name = "graph.cas.att.eigen.gif")
+  }
 
   #tabela com os resultados do ataque
   df<-hellno::as.data.frame(cbind(c(vertex, NA), c(strength, NA), c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=F)

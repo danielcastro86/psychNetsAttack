@@ -24,7 +24,7 @@ cas.att.bridExpInfs2 <- function(g, adjmat){
 
 
   #remoção dos vértices
-  animation::saveGIF({ for(i in 1:(n-1)){
+  for(i in 1:(n-1)){
     try(vertex[i] <- V(g2)$names[which.max(networktools::bridge(mat2, communities = cluster_walktrap(g2))$`Bridge Expected Influence (2-step)`)]) #cálculo e seleção do vértice a remover + registo do nome do vértice
     try(strength[i] <- max(networktools::bridge(mat2, communities = cluster_walktrap(g2))$`Bridge Expected Influence (2-step)`)) #registo do valor máximo da força
 
@@ -53,7 +53,7 @@ cas.att.bridExpInfs2 <- function(g, adjmat){
 
     mat2 <- as_adjacency_matrix(g2, attr = "weight")
 
-  }}, movie.name = "graph.cas.att.bridExpInfs2.gif")
+  }
 
   #tabela com os resultados do ataque
 
