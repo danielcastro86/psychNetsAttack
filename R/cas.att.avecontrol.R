@@ -24,7 +24,7 @@ cas.att.avecontrol <- function(g, adjmat){
 
 
   #remoção dos vértices
-  animation::saveGIF({ for(i in 1:(n-1)){
+for(i in 1:(n-1)){
     try(vertex[i] <- V(g2)$names[which.max(netcontrol::ave_control_centrality(as.matrix(mat2)))]) #cálculo e seleção do vértice a remover + registo do nome do vértice
     try(strength[i] <- max(netcontrol::ave_control_centrality(as.matrix(mat2)))) #registo do valor máximo da força
 
@@ -53,7 +53,7 @@ cas.att.avecontrol <- function(g, adjmat){
 
     mat2 <- as_adjacency_matrix(g2, attr = "weight")
 
-  }}, movie.name = "graph.cas.att.avecont.gif")
+  }
 
   #tabela com os resultados do ataque
 

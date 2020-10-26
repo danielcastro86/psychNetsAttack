@@ -29,7 +29,7 @@ norm.att.bridExpInfs2 <- function(g, adjmat){
   components <- integer(n-1)
 
 
-  animation::saveGIF({ for(i in 1:(n-1)){
+   for(i in 1:(n-1)){
 
 
     #cálculo e registo das propriedades das redes
@@ -51,7 +51,7 @@ norm.att.bridExpInfs2 <- function(g, adjmat){
     #gráfico após cada remoção (layout não está fixo)
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
-  }}, movie.name="graph.norm.att.bridExpInfs2.gif")
+  }
   #tabela com os resultados do ataque
   df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=FALSE)
   names(df)<-c( "norm.att.bridExpInfs2.vertex", "norm.att.bridExpInfs2.value", "norm.att.bridExpInfs2.number.of.vertices", "norm.att.bridExpInfs2.maxcsize", "norm.att.bridExpInfs2.cohesion", "norm.att.bridExpInfs2.averagepath", "norm.att.bridExpInfs2.adhesion", "norm.att.bridExpInfs2.edgedensity", "norm.att.bridExpInfs2.transitivity", "norm.att.bridExpInfs2.radius", "norm.att.bridExpInfs2.density", "norm.att.bridExpInfs2.centralization", "norm.att.bridExpInfs2.components")

@@ -23,7 +23,7 @@ cas.att.str <- function(g){
 
 
   #remoção dos vértices
-  animation::saveGIF({ for(i in 1:(n-1)){
+ for(i in 1:(n-1)){
     vertex[i] <- V(g2)$names[which.max(igraph::strength(g2))] #cálculo e seleção do vértice a remover + registo do nome do vértice
     strength[i] <- max(igraph::strength(g2)) #registo do valor máximo da força
 
@@ -49,7 +49,7 @@ cas.att.str <- function(g){
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
-  }}, movie.name = "graph.cas.att.str.gif")
+  }
 
   #tabela com os resultados do ataque
 

@@ -29,7 +29,7 @@ norm.att.avecontrol <- function(g, adjmat){
   components <- integer(n-1)
 
 
-  animation::saveGIF({ for(i in 1:(n-1)){
+  for(i in 1:(n-1)){
 
 
     #cálculo e registo das propriedades das redes
@@ -51,7 +51,7 @@ norm.att.avecontrol <- function(g, adjmat){
     #gráfico após cada remoção (layout não está fixo)
     plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
          vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
-  }}, movie.name="graph.norm.att.avecontrol.gif")
+  }
   #tabela com os resultados do ataque
   df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=FALSE)
   names(df)<-c( "norm.att.avecont.vertex", "norm.att.avecont.value", "norm.att.avecont.number.of.vertices", "norm.att.avecont.maxcsize", "norm.att.avecont.cohesion", "norm.att.avecont.averagepath", "norm.att.avecont.adhesion", "norm.att.avecont.edgedensity", "norm.att.avecont.transitivity", "norm.att.avecont.radius", "norm.att.avecont.density", "norm.att.avecont.centralization", "norm.att.avecont.components")
