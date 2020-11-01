@@ -13,8 +13,8 @@ att.extension <- function(att.scores, rand.scores){
   rand$proportion.of.nodes <- rand[,3] / max(rand[,3], na.rm = T)
   rand <- mutate(rand, proportion.of.nodes= 1- rand$proportion.of.nodes)
 
-  pExt.components <- dat$proportion.of.nodes[max(dat[,13], na.rm = T)]
-  pExt.pathlength <- dat$proportion.of.nodes[max(dat[,6], na.rm = T)]
+  pExt.components <- dat$proportion.of.nodes[which.max(dat[,13], na.rm = T)]
+  pExt.pathlength <- dat$proportion.of.nodes[which.max(dat[,6], na.rm = T)]
 
   pExt.df <- hellno::data.frame("Components"=pExt.components, "Ave.Path.Length"= pExt.pathlength)
 

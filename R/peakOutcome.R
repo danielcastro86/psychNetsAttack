@@ -6,11 +6,11 @@ peakOutcome <- function(att.scores, rand.scores){
   rand <- rand.scores
 
   dat[,c(2:ncol(dat))] <- sapply(dat[,c(2:ncol(dat))], as.numeric)
-  dat$proportion.of.nodes <- dat[,3] / max(dat[,3])
+  dat$proportion.of.nodes <- dat[,3] / max(dat[,3], na.rm = T)
   dat <- mutate(dat, proportion.of.nodes= 1- dat$proportion.of.nodes)
 
   rand[,c(2:ncol(rand))] <- sapply(rand[,c(2:ncol(rand))], as.numeric)
-  rand$proportion.of.nodes <- rand[,3] / max(rand[,3])
+  rand$proportion.of.nodes <- rand[,3] / max(rand[,3], na.rm = T)
   rand <- mutate(rand, proportion.of.nodes= 1- rand$proportion.of.nodes)
 
   pOut.pathlength <- max(dat[,6], na.rm = T) - subset(dat[,6], dat[,3] == nrow(dat))
