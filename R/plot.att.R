@@ -73,5 +73,3 @@ plot.att <- function(attackscores){
 
   }
 
-
-}
