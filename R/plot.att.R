@@ -1,7 +1,7 @@
 plot.att <- function(attackscores){
 
 
-    scores <- nsscores
+    scores <- attackscores
 
     #average path
     graphdata <- scores[[1]] %>% dplyr::select(3,6)
@@ -69,7 +69,5 @@ plot.att <- function(attackscores){
       scale_y_continuous() +
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
+}
     return(grid.arrange(AvePathPlot, DensityPlot, ComponentsPlot, nrow=3, ncol=1, top=""))
-
-  }
-
