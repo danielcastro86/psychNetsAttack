@@ -15,7 +15,7 @@ plot.att <- function(attackscores){
     colnames(graphdata)[3] <- "Average Path Length"
 
 
-  ggplot(graphdata, aes(x=`Number of Nodes in the Network`,
+    AvePathPlot <- ggplot(graphdata, aes(x=`Number of Nodes in the Network`,
                                          y= `Average Path Length`,
                                          group= variable,
                                          color=variable)) +
