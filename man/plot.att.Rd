@@ -10,13 +10,9 @@ plot.att(attackscores, attacktype, centmeas)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{attackscores}{dataframe with results from the chosen attack}
-  \item{attacktype}{Type of the attack that was executed, normal or cascade}
-  \item{centmeas}{centrality measures used in the attack, strength, bridge strength,
-  degree, average control, modal control, eigenvector, bridge expected influence 1-step,
-  bridge expected influence 2-step, expected influence 1-step, expected influence 2-step}
 }
 \details{
-All values must be specified}
+}
 \value{
 a plot with for each network property after the removal of each ndoe
 }
