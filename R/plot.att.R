@@ -71,3 +71,4 @@ plot.att <- function(attackscores){
 
 }
     return(grid.arrange(AvePathPlot, DensityPlot, ComponentsPlot, nrow=3, ncol=1, top=""))
+
