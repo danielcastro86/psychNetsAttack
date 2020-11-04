@@ -3,6 +3,15 @@ plot.att <- function(attackscores){
 
     scores <- attackscores
 
+
+    scores[[1]][,c(2:ncol(scores[[1]]))] <- sapply(scores[[1]][,c(2:ncol(scores[[1]]))], as.numeric)
+    scores[[1]]$proportion.of.nodes <- scores[[1]][,3] / max(scores[[1]][,3], na.rm = T)
+    scores[[1]] <- mutate(scores[[1]], proportion.of.nodes= 1- scores[[1]]$proportion.of.nodes)
+
+    scores[[2]][,c(2:ncol(scores[[2]]))] <- sapply(scores[[2]][,c(2:ncol(scores[[2]]))], as.numeric)
+    scores[[2]]$proportion.of.nodes <- scores[[2]][,3] / max(scores[[2]][,3], na.rm = T)
+    scores[[2]] <- mutate(scores[[2]], proportion.of.nodes= 1- scores[[2]]$proportion.of.nodes)
+
     #average path
     graphdata <- scores[[1]] %>% dplyr::select(3,6)
     graphdata <- cbind(graphdata, scores[[2]][[6]])
