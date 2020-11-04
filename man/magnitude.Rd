@@ -1,16 +1,15 @@
-\name{att.extension}
-\alias{att.extension}
+\name{magnitude}
+\alias{magnitude}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Extension of the attack}
-\description{
-proportion of nodes removed at the maximum value}
+\title{Attack Magnitude}
+\description{difference between the maximum and initial values}
 \usage{
-att.extension(att.scores, rand.scores)
+magnitude(att.scores, rand.scores)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{att.scores}{attack scores}
-  \item{rand.scores}{random scores}
+  \item{att.scores}{scores from the attack}
+  \item{rand.score}{scores from the random attack}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -25,9 +24,7 @@ att.extension(att.scores, rand.scores)
 \references{
 %% ~put references to the literature/web site here ~
 }
-\author{
-%%  ~~who you are~~
-}
+\author{Daniel Castro}
 \note{
 %%  ~~further notes~~
 }

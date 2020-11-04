@@ -1,6 +1,6 @@
 #attack results function
 
-peakOutcome <- function(att.scores, rand.scores){
+magnitude <- function(att.scores, rand.scores){
 
   dat <- att.scores
   rand <- rand.scores
@@ -23,7 +23,7 @@ peakOutcome <- function(att.scores, rand.scores){
 
   pOut.rand.df <- hellno::data.frame("Components" = pOut.rand.component,"Ave.Path.Length" = pOut.rand.pathlength)
 
-  return(list("Attack Peak Outcome" = c(pOut.df), "Random Peak Outcome" = c(pOut.rand.df)))
+  return(list("Attack Magnitude" = c(pOut.df), "Random Attack Magnitude" = c(pOut.rand.df)))
 }
 
 

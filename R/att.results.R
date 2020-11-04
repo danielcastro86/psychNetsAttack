@@ -4,9 +4,9 @@ att.results <- function(attackscores){
                 att <- attackscores[[1]]
                 rand <- attackscores[[2]]
 
-                pOut <- peakOutcome(att, rand)
+                pOut <- magnitude(att, rand)
 
-                pExt <- att.extension(att, rand)
+                pExt <- extension(att, rand)
 
                 pHalf <- netprop.at(att, rand, remainingvertex = floor(nrow(att) / 2))
 

@@ -1,15 +1,16 @@
-\name{peakOutcome}
-\alias{peakOutcome}
+\name{extension}
+\alias{extension}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Peak Outcome}
-\description{difference between the maximum and initial values}
+\title{Extension of the attack}
+\description{
+proportion of nodes removed at the maximum value}
 \usage{
-peakOutcome(att.scores, rand.scores)
+extension(att.scores, rand.scores)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{att.scores}{scores from the attack}
-  \item{rand.score}{scores from the random attack}
+  \item{att.scores}{attack scores}
+  \item{rand.scores}{random scores}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -24,7 +25,9 @@ peakOutcome(att.scores, rand.scores)
 \references{
 %% ~put references to the literature/web site here ~
 }
-\author{Daniel Castro}
+\author{
+%%  ~~who you are~~
+}
 \note{
 %%  ~~further notes~~
 }
