@@ -1,6 +1,6 @@
 #attack extension
 
-att.extension <- function(att.scores, rand.scores){
+extension <- function(att.scores, rand.scores){
 
   dat <- att.scores
   rand <- rand.scores
