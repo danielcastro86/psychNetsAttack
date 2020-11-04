@@ -24,8 +24,7 @@ plot.att <- function(attackscores){
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
       scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))),
-                         limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T)))
-    + theme_gray()
+                         limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #density
     graphdata <- scores[[1]] %>% dplyr::select(3,11)
