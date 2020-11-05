@@ -13,18 +13,18 @@ plot.att <- function(attackscores){
     scores[[2]] <- mutate(scores[[2]], proportion.of.nodes= 1- scores[[2]]$proportion.of.nodes)
 
     #average path
-    graphdata <- scores[[1]] %>% dplyr::select(3,6)
+    graphdata <- scores[[1]] %>% dplyr::select(14,6)
     graphdata <- cbind(graphdata, scores[[2]][[6]])
 
-    colnames(graphdata) <- c("Number of Nodes in the Network", "Attack Score", "Random Attack Score")
+    colnames(graphdata) <- c("Proportion of Nodes in the Network", "Attack Score", "Random Attack Score")
 
-    graphdata <- melt(graphdata, id.vars = "Number of Nodes in the Network")
+    graphdata <- melt(graphdata, id.vars = "Proportion of Nodes in the Network")
     graphdata$value <- as.numeric(as.character(graphdata$value))
-    graphdata$`Number of Nodes in the Network` <- as.numeric(as.character(graphdata$`Number of Nodes in the Network`))
+    graphdata$`Proportion of Nodes in the Network` <- as.numeric(as.character(graphdata$`Proportion of Nodes in the Network`))
     colnames(graphdata)[3] <- "Average Path Length"
 
 
-    AvePathPlot <- ggplot(graphdata, aes(x=`Number of Nodes in the Network`,
+    AvePathPlot <- ggplot(graphdata, aes(x=`Proportion of Nodes in the Network`,
                                          y= `Average Path Length`,
                                          group= variable,
                                          color=variable)) +
@@ -32,21 +32,21 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))),
-                         limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))),
+                         limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #density
-    graphdata <- scores[[1]] %>% dplyr::select(3,11)
+    graphdata <- scores[[1]] %>% dplyr::select(14,11)
     graphdata <- cbind(graphdata, scores[[2]][[11]])
 
-    colnames(graphdata) <- c("Number of Nodes in the Network", "Attack Score", "Random Attack Score")
+    colnames(graphdata) <- c("Proportion of Nodes in the Network", "Attack Score", "Random Attack Score")
 
-    graphdata <- melt(graphdata, id.vars = "Number of Nodes in the Network")
+    graphdata <- melt(graphdata, id.vars = "Proportion of Nodes in the Network")
     graphdata$value <- as.numeric(as.character(graphdata$value))
-    graphdata$`Number of Nodes in the Network` <- as.numeric(as.character(graphdata$`Number of Nodes in the Network`))
+    graphdata$`Proportion of Nodes in the Network` <- as.numeric(as.character(graphdata$`Proportion of Nodes in the Network`))
     colnames(graphdata)[3] <- "Network Density"
 
-    DensityPlot <- ggplot(graphdata, aes(x=`Number of Nodes in the Network`,
+    DensityPlot <- ggplot(graphdata, aes(x=`Proportion of Nodes in the Network`,
                                          y= `Network Density`,
                                          group= variable,
                                          color=variable)) +
@@ -54,28 +54,28 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
-    graphdata <- scores[[1]] %>% dplyr::select(3,13)
+    graphdata <- scores[[1]] %>% dplyr::select(14,13)
     graphdata <- cbind(graphdata, scores[[2]][[13]])
 
-    colnames(graphdata) <- c("Number of Nodes in the Network", "Attack Score", "Random Attack Score")
+    colnames(graphdata) <- c("Proportion of Nodes in the Network", "Attack Score", "Random Attack Score")
 
-    graphdata <- melt(graphdata, id.vars = "Number of Nodes in the Network")
+    graphdata <- melt(graphdata, id.vars = "Proportion of Nodes in the Network")
     graphdata$value <- as.numeric(as.character(graphdata$value))
-    graphdata$`Number of Nodes in the Network` <- as.numeric(as.character(graphdata$`Number of Nodes in the Network`))
-    colnames(graphdata)[3] <- "Number of Components"
+    graphdata$`Proportion of Nodes in the Network` <- as.numeric(as.character(graphdata$`Proportion of Nodes in the Network`))
+    colnames(graphdata)[3] <- "Proportion of Components"
 
-    ComponentsPlot <- ggplot(graphdata, aes(x=`Number of Nodes in the Network`,
-                                            y= `Number of Components`,
+    ComponentsPlot <- ggplot(graphdata, aes(x=`Proportion of Nodes in the Network`,
+                                            y= `Proportion of Components`,
                                             group= variable,
                                             color=variable)) +
 
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Number of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Number of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
 
     return(grid.arrange(AvePathPlot, DensityPlot, ComponentsPlot, nrow=3, ncol=1, top=""))
