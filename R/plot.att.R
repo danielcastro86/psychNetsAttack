@@ -32,7 +32,7 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))),
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T)))),
                          limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #density
@@ -54,7 +54,7 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T)))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
     #components
     graphdata <- scores[[1]] %>% dplyr::select(14,13)
@@ -75,7 +75,7 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by = 1))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous(breaks = c(rev(seq(from = 1, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T)))), limits = c(1, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
 
 
     return(grid.arrange(AvePathPlot, DensityPlot, ComponentsPlot, nrow=3, ncol=1, top=""))
