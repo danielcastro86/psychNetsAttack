@@ -32,8 +32,7 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(breaks = c(rev(seq(from = 0, to = max(graphdata$`Proportion of Nodes in the Network`, na.rm = T), by= 0.05))),
-                         limits = c(0, max(graphdata$`Proportion of Nodes in the Network`, na.rm = T))) + theme_gray()
+      scale_x_continuous() + theme_gray()
 
     #density
     graphdata <- scores[[1]] %>% dplyr::select(14,11)
