@@ -32,7 +32,7 @@ plot.att <- function(attackscores){
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous() + theme_gray()
+      scale_x_continuous(breaks = 0.05) + theme_gray()
 
     #density
     graphdata <- scores[[1]] %>% dplyr::select(14,11)
