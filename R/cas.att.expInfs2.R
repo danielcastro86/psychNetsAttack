@@ -24,8 +24,8 @@ cas.att.expInfs2 <- function(g){
 
   #remoção dos vértices
   for(i in 1:(n-1)){
-    try(vertex[i] <- V(g2)$names[which.max(networktools::expectedInf(g)$step2)]) #cálculo e seleção do vértice a remover + registo do nome do vértice
-    try(strength[i] <- max(networktools::expectedInf(g)$step2)) #registo do valor máximo da força
+    try(vertex[i] <- V(g2)$names[which.max(networktools::expectedInf(g2)$step2)]) #cálculo e seleção do vértice a remover + registo do nome do vértice
+    try(strength[i] <- max(networktools::expectedInf(g2)$step2)) #registo do valor máximo da força
 
 
     #cálculo e registo das propriedades das redes
@@ -43,7 +43,7 @@ cas.att.expInfs2 <- function(g){
     centralization[i]<-igraph::centr_degree(g2)$centralization
     components[i] <- igraph::components(g2)$no
 
-    try(g2 <- igraph::delete.vertices(g2, v=which.max(networktools::expectedInf(g)$step2))) #cálculo e seleção do vértice a remover
+    try(g2 <- igraph::delete.vertices(g2, v=which.max(networktools::expectedInf(g2)$step2))) #cálculo e seleção do vértice a remover
 
     #gráfico após cada remoção (layout não está fixo)
     #plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
