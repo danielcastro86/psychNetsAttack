@@ -49,8 +49,8 @@ random.att <- function(g){
     g2 <- igraph::delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
 
     #gráfico após cada remoção (layout não está fixo)
-    plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
-         vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
+    #plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
+         #vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
   }
 

@@ -47,8 +47,8 @@ cas.att.bridExpInfs2 <- function(g, adjmat){
     try(g2 <- igraph::delete.vertices(g2, v=which.max(networktools::bridge(mat2, communities = cluster_walktrap(g2))$`Bridge Expected Influence (2-step)`))) #cálculo e seleção do vértice a remover
 
     #gráfico após cada remoção (layout não está fixo)
-    plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
-         vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
+    #plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
+      #   vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
 
     mat2 <- as_adjacency_matrix(g2, attr = "weight")

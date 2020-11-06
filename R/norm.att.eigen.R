@@ -49,8 +49,8 @@ norm.att.eigen <- function(g){
     g2 <- igraph::delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
 
     #gráfico após cada remoção (layout não está fixo)
-    plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
-         vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
+    #plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
+         #vertex.label=labels, vertex.label.cex=0.8, edge.width=2)
   }
   #tabela com os resultados do ataque
   df<-hellno::as.data.frame(cbind(matri, c(numberofvertices, NA), c(clustersizes, NA), c(cohesion, NA), c(averagepath, NA), c(adhesion, NA), c(edgedensity, NA), c(transitivity, NA), c(radius, NA), c(density, NA), c(centralization, NA), c(components, NA)), stringAsFactors=FALSE)

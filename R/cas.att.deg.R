@@ -44,8 +44,8 @@ cas.att.deg <- function(g){
     g2 <- igraph::delete.vertices(g2, v=which.max(igraph::degree(g2))) #cálculo e seleção do vértice a remover
 
     #gráfico após cada remoção (layout não está fixo)
-    plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
-         vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
+    #plot(g2, vertex.size=20, vertex.color="darkolivegreen3",
+      #   vertex.label=V(g2)$names, vertex.label.cex=0.8, edge.width=2)
 
   }
 
