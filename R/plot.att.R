@@ -64,10 +64,10 @@ plot.att <- function(attackscores){
     graphdata <- melt(graphdata, id.vars = "Proportion of Nodes Removed")
     graphdata$value <- as.numeric(as.character(graphdata$value))
     graphdata$`Proportion of Nodes Removed` <- as.numeric(as.character(graphdata$`Proportion of Nodes Removed`))
-    colnames(graphdata)[3] <- "Proportion of Components"
+    colnames(graphdata)[3] <- "Number of Components"
 
     ComponentsPlot <- ggplot(graphdata, aes(x=`Proportion of Nodes Removed`,
-                                            y= `Proportion of Components`,
+                                            y= `Number of Components`,
                                             group= variable,
                                             color=variable)) +
 
