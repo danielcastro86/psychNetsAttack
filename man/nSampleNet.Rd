@@ -10,11 +10,10 @@ nSampleNet(nsamples, samplesize, data)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{nsamples}{number of samples to extract
+  \item{nsamples}{number of samples to extract}
   \item{samplesize}{Size of of the sample}
   \item{data}{data from where the samples should be exracted}
 %%     ~~Describe \code{x} here~~
-}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
