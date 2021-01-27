@@ -7,7 +7,7 @@ netDesc <- function(graph){
   #igraph
   nv <- gorder(graph = g)   #number of vertices
   ne <- gsize(graph =g)    #number of edges
-  iso <- sum(degree(g)==0) #isolated
+  iso <- sum(igraph::degree(g)==0) #isolated
   g.nComponents <- clusters(g)
   nComp <- g.nComponents$no #number of components
   av.path.lenght <- average.path.length(graph = g, unconnected = TRUE)
@@ -33,31 +33,33 @@ netDesc <- function(graph){
   avdeg <- gsize(graph =g) / gorder(graph = g)
 
   #transitivity
-  globalTransit <- transitivity(g, type = "global", isolates = "zero")
+  globalTransit <- igraph::transitivity(g, type = "global", isolates = "zero")
 
-  localTransit <- transitivity(g, type = "local", isolates = "zero")
-
-
+  localTransit <- igraph::transitivity(g, type = "local", isolates = "zero")
 
 
-  netDesc <- list("Global Properties" = c(hellno::data.frame("Nodes"= nv, "Edges" = ne,
-                                                              "Negative Edges" = negEdges,
-                                                              "Isolated Nodes" =  iso,
-                                                              "Components" = nComp,
-                                                              "Ave.Path" =  av.path.lenght,
-                                                              "Density" = density,
-                                                              "Compactness" = compactness,
-                                                              "Global Clustering Coefficient"= globalClusterCoef,
-                                                              "Global Transitivity" = globalTransit)),
-                  "Network Class" = c("Estrada Class" = estrada,
-                                      "Average Degree" = avdeg),
-                  "Local Properties" = c("Local Clustering Coefficient" = localClusterCoef,
-                                         "Local Transitivity" = localTransit),
-                  "Complexity Measures" = c(hellno::data.frame("Distance" = gDistanceCompl,
-                                                               "Vertex" = gVertexCompl,
-                                                               "Index" = gIndexCompl,
-                                                               "Index B" = gindexBcompl)),
-                  "Motif" = c(motif))
+
+
+  netDesc1 <- (hellno::data.frame("Nodes"= nv, "Edges" = ne,"Negative Edges" = negEdges,
+                                  "Isolated Nodes" =  iso, "Components" = nComp,
+                                  "Ave.Path" =  av.path.lenght, "Density" = density,
+                                  "Compactness" = compactness, "Global Clustering Coefficient"= globalClusterCoef,
+                                  "Global Transitivity" = globalTransit))
+
+  netDesc2 <- hellno::data.frame("Estrada Class" = estrada, "Average Degree" = avdeg)
+
+  netDesc3 <- hellno::data.frame("Local Clustering Coefficient" = localClusterCoef,
+                                 "Local Transitivity" = localTransit)
+
+  netDesc4 <- hellno::data.frame(hellno::data.frame("Distance" = gDistanceCompl,
+                                                    "Vertex" = gVertexCompl,
+                                                    "Index" = gIndexCompl,
+                                                    "Index B" = gindexBcompl))
+  netDesc5 <- hellno::data.frame(motif)
+
+  netDesc <- list("Global Properties" = c(netDesc1), "Network Class" = c(netDesc2),
+                  "Local Properties" = c(netDesc3), "Complexity Measures" = c(netDesc4),
+                  "Motif" = c(netDesc5))
 
 
   return(netDesc)
