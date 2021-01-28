@@ -6,13 +6,15 @@
 mean global network descriptives with random sample selection
 }
 \usage{
-nSampleNet(nsamples, samplesize, data)
+nSampleNet(nsamples, samplesize, data, method)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{nsamples}{number of samples to extract}
   \item{samplesize}{Size of of the sample}
   \item{data}{data from where the samples should be exracted}
+  \item{method}{"ggmModSelect" estimation with bootnet or "BGGM1" estimation
+  with BGGM for ordinal variables}
 %%     ~~Describe \code{x} here~~
 }
 \details{
