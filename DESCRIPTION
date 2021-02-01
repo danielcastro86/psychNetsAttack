@@ -26,7 +26,7 @@ Imports: dplyr,
         animation,
         magick,
         gridExtra
-Depends:dplyr,
+Depends: dplyr,
         qgraph,
         igraph,
         bootnet,
@@ -43,4 +43,8 @@ Depends:dplyr,
         animation,
         magick,
         gridExtra
-Remotes:petermeissner/hellnotests
+Remotes: petermeissner/hellnotests
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

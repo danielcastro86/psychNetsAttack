@@ -3,8 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Normal Attack - Average Controlabillity}
 \description{
-Estimates the Average Controlabillity Centrality of the initial network and removes
-the nodes in a decreasing order
+Estimates the Average Controlabillity Centrality of the initial network and removes the nodes in a decreasing order. After each node removal a set of network properties are estimated.
 }
 \usage{
 norm.att.avecontrol(g, matadj)

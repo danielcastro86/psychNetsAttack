@@ -6,22 +6,18 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-netprop.at(att.scores, rand.scores)
+netprop.at(att.scores, rand.scores, remainingvertex)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{att.scores}{attack scores}
   \item{rand.scores}{random scores}
+  \item{remainingvertex}{how many nodes should be retained in the network}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\value{List of dataframes containing the network properties with the remaining nodes in the network for the applied attack and for the random attack
 }
 \references{
 %% ~put references to the literature/web site here ~

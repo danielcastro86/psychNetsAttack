@@ -1,10 +1,8 @@
 \name{cas.att.str}
 \alias{cas.att.str}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-Cascade Attack - Strength Centrality}
-\description{Estimates Strength Centrality iteratively and removes the node with
-highest centrality scores}
+\title{Cascade Attack - Strength Centrality}
+\description{Estimates Strength Centrality for the initial network and after each node removal.  The node with highest centrality is removed and network properties are estimated.}
 \usage{
 cas.att.str(g)
 }
@@ -16,8 +14,7 @@ cas.att.str(g)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A dataframe with the network properties values for the initial network and after
-each node removal
+A dataframe with the network properties values for the initial network and after each node removal
 }
 \references{
 %% ~put references to the literature/web site here ~

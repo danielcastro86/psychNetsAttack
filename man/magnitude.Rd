@@ -2,7 +2,7 @@
 \alias{magnitude}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Attack Magnitude}
-\description{difference between the maximum and initial values}
+\description{Difference between the maximum and initial values of each network property}
 \usage{
 magnitude(att.scores, rand.scores)
 }
@@ -15,11 +15,7 @@ magnitude(att.scores, rand.scores)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+List of dataframes with Attack Magnitude and Random Attack Magnitude
 }
 \references{
 %% ~put references to the literature/web site here ~

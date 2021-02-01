@@ -3,8 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Cascade Attack - Degree Centrality}
 \description{
-Estimates Degree Centrality for the initial network and after each node
-removal.  The node with highest centrality is removed after each estimation.}
+Estimates Degree centrality for the initial network and after each node removal.  The node with highest centrality is removed and network properties are estimated.}
 \usage{
 cas.att.deg(g)
 }
@@ -16,8 +15,7 @@ cas.att.deg(g)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A dataframe with the network properties values for the initial network and after
-each node removal.
+A dataframe with the network properties values for the initial network and after each node removal.
 }
 \references{
 %% ~put references to the literature/web site here ~

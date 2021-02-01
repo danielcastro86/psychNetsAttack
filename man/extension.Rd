@@ -2,8 +2,7 @@
 \alias{extension}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Extension of the attack}
-\description{
-proportion of nodes removed at the maximum value}
+\description{proportion of nodes removed at the maximum value of each network propertie}
 \usage{
 extension(att.scores, rand.scores)
 }
@@ -16,18 +15,13 @@ extension(att.scores, rand.scores)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+List of dataframes with the attack extension and random attack extension
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
-}
+Daniel Castro}
 \note{
 %%  ~~further notes~~
 }

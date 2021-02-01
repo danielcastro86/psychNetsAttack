@@ -3,8 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{network descriptives}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+Network descriptives estimation. The function estimates global network properties, local network properties, network class, complexity measures and motifs}
 \usage{
 netDesc(g)
 }
@@ -15,19 +14,13 @@ netDesc(g)
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\value{list of dataframes
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
-}
+Daniel Castro}
 \note{
 %%  ~~further notes~~
 }

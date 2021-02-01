@@ -1,10 +1,13 @@
 \name{nSampleNet}
 \alias{nSampleNet}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{mean global network descriptives}
+\title{random sample selection from data and net descriptives estimation}
 \description{
-mean global network descriptives with random sample selection
-}
+This function allows for the extraction of a user-specified sample size
+from the data, a n number of times. The function estimates the network either
+through BGGM for ordinal variables or ggmModSelect. The function returns net
+descriptives from all the random n samples retrieved and the mean global descriptives
+for the global network properties from netDesc function}
 \usage{
 nSampleNet(nsamples, samplesize, data, method)
 }
@@ -29,8 +32,7 @@ for all samples
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
-}
+Daniel Castro}
 \note{
 %%  ~~further notes~~
 }

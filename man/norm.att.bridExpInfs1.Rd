@@ -3,8 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Normal Attack - Bridge Expected Influence One-Step}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+Estimates the Bridge Expected Influence One-Step of the initial network and removes the nodes in a decreasing order. After each node removal a set of network properties are estimated.}
 \usage{
 norm.att.bridExpInfs1(g, adjmat)
 }
@@ -17,11 +16,7 @@ norm.att.bridExpInfs1(g, adjmat)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A dataframe with the network properties values for the initial network and after each node removal.
 }
 \references{
 %% ~put references to the literature/web site here ~
