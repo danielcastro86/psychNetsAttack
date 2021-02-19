@@ -18,8 +18,7 @@ norm.att.bridExpInfs2(g, adjmat)
 \value{
 A dataframe with the network properties values for the initial network and after each node removal.
 \references{
-%% ~put references to the literature/web site here ~
-}
+NA}
 \author{
 %%  ~~who you are~~
 }

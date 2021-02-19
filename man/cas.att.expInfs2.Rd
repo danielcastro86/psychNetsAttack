@@ -17,9 +17,7 @@ cas.att.expInfs2(g)
 \value{
 A dataframe with the network properties values for the initial network and after each node removal.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+\references{NA}
 \author{
 %%  ~~who you are~~
 }
