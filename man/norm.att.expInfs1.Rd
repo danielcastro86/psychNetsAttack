@@ -1,11 +1,11 @@
-\name{norm.att.expInfs2}
-\alias{norm.att.expInfs2}
+\name{norm.att.expInfs1}
+\alias{norm.att.expInfs1}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Normal Attack - Expected Influence One-Step}
 \description{Estimates the Expected Influence One-Step of the initial network and removes
 the nodes in a decreasing order}
 \usage{
-norm.att.expInfs2(g)
+norm.att.expInfs1(g)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
