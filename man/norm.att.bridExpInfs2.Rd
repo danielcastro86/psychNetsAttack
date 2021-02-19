@@ -16,9 +16,9 @@ norm.att.bridExpInfs2(g, adjmat)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A dataframe with the network properties values for the initial network and after each node removal.
+A dataframe with the network properties values for the initial network and after each node removal.}
 \references{
-NA}
+}
 \author{
 %%  ~~who you are~~
 }
