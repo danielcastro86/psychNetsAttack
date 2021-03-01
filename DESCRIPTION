@@ -25,7 +25,10 @@ Imports: dplyr,
         hellnotests,
         animation,
         magick,
-        gridExtra
+        gridExtra,
+        pulsar,
+        QuACN,
+        RBGL
 Depends: dplyr,
         qgraph,
         igraph,
@@ -42,7 +45,9 @@ Depends: dplyr,
         hellnotests,
         animation,
         magick,
-        gridExtra
+        gridExtra,
+        pulsar,
+        QuACN
 Remotes: petermeissner/hellnotests
 Suggests: 
     knitr,
