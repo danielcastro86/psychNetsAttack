@@ -28,7 +28,8 @@ Imports: dplyr,
         gridExtra,
         pulsar,
         QuACN,
-        RBGL
+        RBGL,
+        snakecase
 Depends: dplyr,
         qgraph,
         igraph,
