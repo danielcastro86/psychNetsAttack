@@ -48,7 +48,8 @@ Depends: dplyr,
         magick,
         gridExtra,
         pulsar,
-        QuACN
+        QuACN,
+        snakecase
 Remotes: petermeissner/hellnotests
 Suggests: 
     knitr,
