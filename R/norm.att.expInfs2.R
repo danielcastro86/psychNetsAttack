@@ -34,17 +34,17 @@ for(i in 1:(n-1)){
 
     #cálculo e registo das propriedades das redes
     #(verificar: algumas parecem ter sempre 0 | edgedensity parece ser a mesma coisa que graph.density)
-    numberofvertices[i]<-gorder(g2)
-    clustersizes[i]<-max(clusters(g2)$csize)
-    cohesion[i]<-cohesion(g2)
-    averagepath[i]<-average.path.length(g2)
-    adhesion[i]<- graph.adhesion(g2)
-    edgedensity[i] <-edge_density(g2)
-    transitivity[i]<- transitivity(g2, type= "global")
-    radius[i]<-radius(g2)
-    density[i]<- graph.density(g2)
-    centralization[i]<-centr_degree(g2)$centralization
-    components[i] <- components(g2)$no
+  numberofvertices[i]<-igraph::gorder(g2)
+  clustersizes[i]<-max(igraph::clusters(g2)$csize)
+  cohesion[i]<-igraph::cohesion(g2)
+  averagepath[i]<-igraph::average.path.length(g2)
+  adhesion[i]<- igraph::graph.adhesion(g2)
+  edgedensity[i] <-igraph::edge_density(g2)
+  transitivity[i]<- igraph::transitivity(g2, type= "global")
+  radius[i]<-igraph::radius(g2)
+  density[i]<- igraph::graph.density(g2)
+  centralization[i]<-igraph::centr_degree(g2)$centralization
+  components[i] <- igraph::components(g2)$no
 
     g2 <- delete.vertices(g2, v=which(V(g2)$names==matri[i,1])) #remover vértice pela ordem na tabela
 
