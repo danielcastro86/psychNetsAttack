@@ -28,11 +28,12 @@ plot.att <- function(attackscores){
                                          y= `Average Path Length`,
                                          group= variable,
                                          color=variable)) +
+      scale_color_manual(values= c("#46ACC8", "#E58601")) +
       labs(color="Attack Type") +
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_gray()
+      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_light()
 
     #density
     graphdata <- scores[[1]] %>% dplyr::select(14,11)
@@ -49,11 +50,12 @@ plot.att <- function(attackscores){
                                          y= `Network Density`,
                                          group= variable,
                                          color=variable)) +
+      scale_color_manual(values= c("#46ACC8", "#E58601")) +
       labs(color="Attack Type") +
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_gray()
+      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_light()
 
     #components
     graphdata <- scores[[1]] %>% dplyr::select(14,13)
@@ -70,15 +72,19 @@ plot.att <- function(attackscores){
                                             y= `Number of Components`,
                                             group= variable,
                                             color=variable)) +
+      scale_color_manual(values= c("#46ACC8", "#E58601")) +
       labs(color="Attack Type") +
       geom_line(linetype = "dotted") +
       geom_point(shape = 19, size = 2) +
       scale_y_continuous() +
-      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_gray()
+      scale_x_continuous(labels = function(x) paste0(x * 100, '%'), breaks = c(0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1)) + theme_light()
 
 
 
-    return(grid.arrange(AvePathPlot, DensityPlot, ComponentsPlot, nrow=1, ncol=3, top=paste0(to_any_case(names(scores)[[1]], case = "title"))))
 
+    p <- ggpubr::ggarrange(AvePathPlot, DensityPlot, ComponentsPlot, ncol = 3, nrow = 1, common.legend = T, legend = "bottom")
+   p1 <- ggpubr::annotate_figure(p, top=ggpubr::text_grob(paste0(to_any_case(names(scores)[[1]], case = "title")), face = "bold"))
+
+    return(print(p1))
 }
 
