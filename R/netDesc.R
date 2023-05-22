@@ -12,6 +12,7 @@ netDesc <- function(graph){
   nComp <- g.nComponents$no #number of components
   av.path.lenght <- average.path.length(graph = g, unconnected = TRUE)
   density <- edge_density(graph = g, loops = FALSE)
+  connectivity <- sum(abs(E(g)$weight))
   negEdges <- length(E(g)[which(E(g)$weight<0)])
 
   #pulsar
@@ -44,7 +45,7 @@ netDesc <- function(graph){
                                   "Isolated Nodes" =  iso, "Components" = nComp,
                                   "Ave.Path" =  av.path.lenght, "Density" = density,
                                   "Compactness" = compactness, "Global Clustering Coefficient"= globalClusterCoef,
-                                  "Global Transitivity" = globalTransit))
+                                  "Global Transitivity" = globalTransit, "Connectivity" = connectivity))
 
   netDesc2 <- hellno::data.frame("Estrada Class" = estrada, "Average Degree" = avdeg)
 
