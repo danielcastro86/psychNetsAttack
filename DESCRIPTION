@@ -47,7 +47,7 @@ Depends: dplyr,
         gridExtra,
         pulsar,
         snakecase
-Remotes: petermeissner/hellnotests
+Remotes: petermeissner/hellnotests,
          cran/QuACN
 Suggests: 
     knitr,
