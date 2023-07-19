@@ -6,7 +6,7 @@ netDesc <- function(graph){
 
   #igraph
   nv <- gorder(graph = g)   #number of vertices
-  ne <- gsize(graph =g)    #number of edges
+  ne <- gsize(graph =g)    #number of edg
   iso <- sum(igraph::degree(g)==0) #isolated
   g.nComponents <- clusters(g)
   nComp <- g.nComponents$no #number of components
