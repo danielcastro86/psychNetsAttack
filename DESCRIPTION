@@ -27,8 +27,6 @@ Imports: dplyr,
         magick,
         gridExtra,
         pulsar,
-        QuACN,
-        RBGL,
         snakecase
 Depends: dplyr,
         qgraph,
@@ -48,9 +46,8 @@ Depends: dplyr,
         magick,
         gridExtra,
         pulsar,
-        QuACN,
         snakecase
-Remotes: petermeissner/hellnotests
+Remotes:
 Suggests: 
     knitr,
     rmarkdown
