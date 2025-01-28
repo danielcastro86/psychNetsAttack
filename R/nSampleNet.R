@@ -1,4 +1,5 @@
 nSampleNet <- function(nsamples, samplesize, data, method) {
+
   calculate_ci <- function(x) {
     se <- sd(x) / sqrt(length(x))  # Standard Error
     mean_x <- mean(x)
@@ -33,6 +34,7 @@ nSampleNet <- function(nsamples, samplesize, data, method) {
   }
 
   global_results <- vector("list", nsamples)
+  qgraph_objects <- vector("list", nsamples)
 
   for (i in seq_len(nsamples)) {
     sampled_data <- dplyr::sample_n(data, samplesize, replace = (method == "BGGM1"))
@@ -47,6 +49,7 @@ nSampleNet <- function(nsamples, samplesize, data, method) {
     }
 
     qRand <- qgraph::qgraph(graph, layout = "spring", directed = FALSE, theme = "TeamFortress", DoNotPlot = TRUE)
+    qgraph_objects[[i]] <- qRand
     iRand <- igraph::as.igraph(qRand, attributes = TRUE)
     global_results[[i]] <- netDesc(iRand)
   }
@@ -61,5 +64,5 @@ nSampleNet <- function(nsamples, samplesize, data, method) {
   ci_results <- calculate_metrics(global_properties)
   summary_df <- summarize_results(ci_results, metric_labels)
 
-  list("Mean Values and CI" = summary_df, "Complete Results" = global_results)
+  list("Mean Values and CI" = summary_df, "Complete Results" = global_results, "Graphs" = qgraph_objects)
 }
